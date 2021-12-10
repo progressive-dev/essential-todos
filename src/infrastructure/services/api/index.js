@@ -1,5 +1,9 @@
-import todos from './todos';
+import companies from './companies';
+import projects  from './projects';
+import permits  from './permits';
 
 export default {
-    todos,
+    companies,
+    projects,
+    permits,
 };

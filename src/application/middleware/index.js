@@ -1,7 +1,8 @@
 import ui from './ui';
-import todos from './todos';
-
+import collection from './collection';
+import permit from './permitMiddleware';
 export default [
     ...ui,
-    ...todos,
+    ...collection,
+    ...permit,
 ]
