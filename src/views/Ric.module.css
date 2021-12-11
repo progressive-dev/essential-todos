@@ -1,0 +1,76 @@
+html {
+    background: #222;
+    color: #FFF;
+}
+
+.board {
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+}
+
+.card {
+    background: #3F4447;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 3px;
+    cursor: pointer;
+    width: 150px;
+    height: 60px;
+    cursor: grab;
+    transition: all 0.3s cubic-bezier(0.4, 0.0, 0.2, 1);
+}
+
+.card:active {
+    cursor: grabbing;
+}
+
+.card.dragging {
+    opacity: .5;
+    transform: scale(.8);
+}
+
+.column {
+    padding: 10px;
+    background: #2c2c2c;
+    border: 2px solid #2c2c2c;
+    transition: all 0.3s cubic-bezier(0.4, 0.0, 0.2, 1);
+}
+
+.column.column-todo h2 {
+    background: #3498DB;
+}
+
+.column.column-ip h2 {
+    background: #F39C12;
+}
+
+.column.column-ip {
+    margin: 0 20px;
+}
+
+.column.drop {
+    border: 2px dashed #FFF;
+}
+
+.column.drop article {
+    pointer-events: none;
+}
+
+h3 {
+    font-size: 21px;
+    font-family: Helvetica;
+    margin: 0;
+}
+
+.card:last-child {
+    margin-bottom: 0;
+}
+
+h2 {
+    background: green;
+    margin: -10px -10px 10px;
+    padding: 4px 10px;
+    font-family: Helvetica;
+    font-size: 21px;
+}

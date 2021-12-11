@@ -9,6 +9,7 @@ import ProjectPage from './Project';
 import PermitPage from './Permit';
 import PublicationsPage from './Publications';
 import InstallationsPage from './Installations';
+import RicPage from './Ric';
 import { NotFound } from './NotFoundError';
 
 
@@ -26,6 +27,7 @@ export default () => {
                 <Route path='/Permits/:id'element={<PermitPage/>}/>
                 <Route path ="/Publications" element={<PublicationsPage/>}/>
                 <Route path ="/Installations" element={<InstallationsPage/>}/>
+                <Route path ="/RegisterInstallationsClassees" element={<RicPage/>}/>
                 <Route path ="*" element={<NotFound/>}/>
             </Routes> 
             

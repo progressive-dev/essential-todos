@@ -111,14 +111,20 @@ return (
             <>
             <Alert color="primary">
             <div className="form-row row">
-                <div className="form-group col-md-10">
+                <div className="form-group col-md-8">
                     <h1>{project.name }</h1>
                 </div>
-                <div className="form-group col-md-1">
-                    <input type='button' value ='Environment' className='btn btn-outline-success'/>
+                <div className="form-group col-md-2">
+                    <input  type='button' 
+                            value ='Registre des Installations Classées - RIC' 
+                            className='btn btn-outline-success'
+                            onClick={()=> navigate('/RegisterInstallationsClassees')}
+                            />
                 </div>
-                <div className="form-group col-md-1">
-                    <input type='button' value ='Security' className='btn btn-outline-success'/>
+                <div className="form-group col-md-2">
+                    <input type='button' 
+                           value ='Registre des Exigences Légales REL' 
+                           className='btn btn-outline-success'/>
                 </div>
             </div>
             </Alert>
