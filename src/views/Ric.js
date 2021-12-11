@@ -2,6 +2,7 @@ import React from "react";
 /*import { useDispatch, useSelector } from 'react-redux';
 import { getItemSelector, getActiveTabSelector} from '../application/selectors/collection';*/
 
+import  './Ric.css';
 
 export default ()=>{
 
@@ -59,7 +60,7 @@ export default ()=>{
 
     return (    
             <>
-                <h1>Registre des installations classées</h1>
+                <h2>Registre des installations classées</h2>
                 <main className="board">
                     <div className="column column-todo" onDrop={e=> drop(e)} onDragOver={e=>allowDrop(e)}>
                         <h2>Todo</h2>
