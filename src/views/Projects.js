@@ -34,10 +34,6 @@ export default () => {
                     {projects.map(project => (
                         <div className={classes.item}
                             key={project.id}
-                           style={{
-                                textDecoration: project.completed ? 'line-through' : 'none',
-                                cursor: 'pointer',
-                            }}
                             onClick={()=>navigateTo('/projects/'+project.id)}
                         >
                             <h3>{project.name}</h3>

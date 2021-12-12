@@ -37,16 +37,29 @@
     transition: all 0.3s cubic-bezier(0.4, 0.0, 0.2, 1);
 }
 
-.status.status-todo h2 {
+.status.status-idle h2 {
     background: #3498DB;
 }
 
-.status.status-ip h2 {
+.status.status-info h2 {
     background: #F39C12;
 }
 
-.status.status-ip {
-    margin: 0 20px;
+.status.status-ncpl h2 {
+    background: hsl(12, 90%, 51%);
+}
+
+.status.status-tbf h2 {
+    background: hsl(251, 90%, 51%);
+}
+
+.status.status-tbv h2 {
+    background: rgb(202, 243, 18);
+}
+
+.status.status {
+    margin: 0 2px;
+    min-width: 80px;
 }
 
 .status.drop {
