@@ -1,7 +1,7 @@
-html {
+/* html {
     background: #222;
     color: #FFF;
-}
+} */
 
 .board {
     display: flex;
@@ -30,30 +30,30 @@ html {
     transform: scale(.8);
 }
 
-.column {
+.status {
     padding: 10px;
     background: #2c2c2c;
     border: 2px solid #2c2c2c;
     transition: all 0.3s cubic-bezier(0.4, 0.0, 0.2, 1);
 }
 
-.column.column-todo h2 {
+.status.status-todo h2 {
     background: #3498DB;
 }
 
-.column.column-ip h2 {
+.status.status-ip h2 {
     background: #F39C12;
 }
 
-.column.column-ip {
+.status.status-ip {
     margin: 0 20px;
 }
 
-.column.drop {
+.status.drop {
     border: 2px dashed #FFF;
 }
 
-.column.drop article {
+.status.drop article {
     pointer-events: none;
 }
 
@@ -68,7 +68,7 @@ h3 {
 }
 
 h2 {
-    background: green;
+   background: green;
     margin: -10px -10px 10px;
     padding: 4px 10px;
     font-family: Helvetica;

@@ -14,6 +14,11 @@ export default {
     save: async function(data){
          const response = await axios.put(endpoint+ 'update', data);
          return response.data
-    }
+    },
+
+    getRic:async function(projectid) {
+        const response = await axios.get(endpoint+ 'GetRic/'+projectid);
+        return response.data
+    },
 }
 

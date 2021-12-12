@@ -27,7 +27,7 @@ export default () =>{
     const tab = useSelector(getActiveTabSelector);
     const loading = useSelector(getLoading);
 
-    React.useEffect(() => {
+    useEffect(() => {
         dispatch(pageLoaded);
         dispatch(itemsActions.load({id:id, table:'projects'}));
     }, [dispatch, id]);
@@ -118,7 +118,7 @@ return (
                     <input  type='button' 
                             value ='Registre des Installations Classées - RIC' 
                             className='btn btn-outline-success'
-                            onClick={()=> navigate('/RegisterInstallationsClassees')}
+                            onClick={()=> navigate(`/Projects/${project.id}/RegisterInstallationsClassees`)}
                             />
                 </div>
                 <div className="form-group col-md-2">

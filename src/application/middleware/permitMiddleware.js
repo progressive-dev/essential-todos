@@ -1,6 +1,7 @@
-import { loadPermitSuccess, splitPermitSuccess,splitAndSavePermitSuccess} from "../actions/permitActions";
-import { LOAD_PERMIT,SPLIT_PERMIT, SAVE_PERMIT, SPLIT_AND_SAVE } from "../actions/permitActions";
 import * as uiActions from '../actions/ui';
+import { loadPermitSuccess, splitPermitSuccess,splitAndSavePermitSuccess,
+         LOAD_PERMIT,SPLIT_PERMIT, SAVE_PERMIT, SPLIT_AND_SAVE } from "../actions/permitActions";
+
 
 
 const permitFlow =  ({ api }) => ({ dispatch }) => next => async (action) =>  {

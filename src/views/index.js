@@ -23,11 +23,12 @@ export default () => {
                 <Route path='/Home' element={<div>Home</div>} />
                 <Route path='/Projects' element={<ProjectsPage />} />
                 <Route path='/Companies' element={<CompaniesPage />}/>
+                <Route path ="/Projects/:id/RegisterInstallationsClassees" element={<RicPage/>}/>
                 <Route path='/Projects/:id'element={<ProjectPage/>}/>
                 <Route path='/Permits/:id'element={<PermitPage/>}/>
                 <Route path ="/Publications" element={<PublicationsPage/>}/>
                 <Route path ="/Installations" element={<InstallationsPage/>}/>
-                <Route path ="/RegisterInstallationsClassees" element={<RicPage/>}/>
+               
                 <Route path ="*" element={<NotFound/>}/>
             </Routes> 
             
