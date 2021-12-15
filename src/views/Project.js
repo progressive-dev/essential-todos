@@ -15,7 +15,7 @@ import classnames from 'classnames';
 import Permits from '../components/Project/Permits';
 
 import General from '../components/Project/General'
-import Installations from '../components/Project/Installations'
+import Module from '../components/Project/Module'
 import Sites from '../components/Project/Sites'
 
 export default () =>{
@@ -46,13 +46,9 @@ export default () =>{
             setValue('address', project.address);
             setValue('regionId', project.regionId);
             setValue('activityAreaId', project.activityAreaId,  )
-            setValue('watchFrequencyId', project.watchFrequencyId,  )
-            setValue('activeYear', project.activeYear,  )
-            setValue('watchActive', project.watchActive,  )
-            setValue('multiSites', project.multiSites,  )
             setValue('description', project.description,  )
             setValue('id', project.id,  )
-            setValue('companyId', project.companyId,  )
+            //setValue('companyId', project.companyId)
                
         };
     },[setValue, project]);
@@ -90,18 +86,21 @@ export default () =>{
                         role="button"
                         onClick={() => { toggle("sites"); }}
                         >
-                        Sites
+                       Sites
                     </NavLink>
                 </NavItem>
-                <NavItem>
-                    <NavLink 
-                        className={classnames({ active: tab === "installations" })}
-                        role="button"
-                        onClick={() => { toggle("installations"); }}
+                {(project.modules === undefined?[]:project.modules).map((module, i) => 
+
+                    <NavItem key={i}>
+                        <NavLink 
+                            className={classnames({ active: tab === module.contextId  })}
+                            role="button"
+                            onClick={() => { toggle(module.contextId); }}
                         >
-                        Installations
-                    </NavLink>
-                </NavItem>
+                        {module.contextId}
+                        </NavLink>
+                    </NavItem>)
+                }
             </Nav></>)
     };
    
@@ -114,18 +113,20 @@ return (
                 <div className="form-group col-md-8">
                     <h1>{project.name }</h1>
                 </div>
-                <div className="form-group col-md-2">
-                    <input  type='button' 
-                            value ='Registre des Installations Classées - RIC' 
-                            className='btn btn-outline-success'
-                            onClick={()=> navigate(`/Projects/${project.id}/RegisterInstallationsClassees`)}
-                            />
-                </div>
-                <div className="form-group col-md-2">
-                    <input type='button' 
-                           value ='Registre des Exigences Légales REL' 
-                           className='btn btn-outline-success'/>
-                </div>
+                {!project.hasEnvironmentModule &&
+                    <div className={'form-group col-md-2'}>
+                        <input type='button' 
+                                value ='Create Security Module'  
+                                className='btn btn-outline-success'
+                                onClick={()=>dispatch(projectActions.CreateEnvironmentModule(project.id))}/>
+                    </div>}
+                {!project.hasSecurityModule &&
+                    <div className={'form-group col-md-2'}>
+                        <input type='button' 
+                                value ='Create Security Module'  
+                                className='btn btn-outline-success'
+                                onClick={()=>dispatch(projectActions.CreateSecurityModule(project.id))}/>
+                    </div>}
             </div>
             </Alert>
             <Tabs/>
@@ -145,12 +146,13 @@ return (
                         navigateTo={navigateTo}
                     />
                 </TabPane> 
-                <TabPane tabId="installations"> 
-                    <Installations
-                    dispatch={dispatch}
-                    collection={project.installations}
-                    />
-                </TabPane> 
+                {(project.modules === undefined?[]:project.modules).map((module, i) => 
+                    <TabPane key={i} tabId={module.contextId}> 
+                        <Module 
+                            module={module}
+                            watchFrequencies= {project.watchFrequencies}/>
+                    </TabPane>  )
+                }
                 <TabPane tabId ="sites">
                     <Sites/>
                 </TabPane>
