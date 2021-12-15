@@ -10,6 +10,6 @@ export default (state = initialState, action) => {
         case (uiActions.SET_LOADING_OFF):
             return { ...state, loading: action.payload };
         default:
-            return state;
+            return state
     }
 }

@@ -1,7 +1,11 @@
 import ui from './ui';
-import todos from './todos';
+import collection from './collection';
+import permit from './permitMiddleware';
+import ric from './ricMiddleware'
 
 export default [
     ...ui,
-    ...todos,
+    ...collection,
+    ...permit,
+    ...ric
 ]
