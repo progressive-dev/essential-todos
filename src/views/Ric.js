@@ -2,15 +2,23 @@ import React, {useEffect}from "react";
 import {useParams} from "react-router-dom";
 import { useDispatch, useSelector } from 'react-redux';
 
+
 import * as ricActions from '../application/actions/ricActions';
 import { getRic, getStatusOptions, getError} from '../application/selectors/ricSelector';
 
 import { getLoading } from '../application/selectors/ui';
 import { pageLoaded } from '../application/actions/ui';
 
-import  './Ric.css';
 
-export default ()=>{
+//import  classes from './Ric.css';
+
+
+
+export default()=>{
+
+    
+      
+      
 
     let { id } = useParams();
     const dispatch = useDispatch();
@@ -18,10 +26,12 @@ export default ()=>{
     const statusOptions = useSelector(getStatusOptions);
     const loading = useSelector(getLoading);
     const error= useSelector(getError);
-
-    const dragStart = target => {
+   
+    
+      const dragStart = target => {
         target.classList.add('dragging');
     };
+
     
     const dragEnd = target => {
         target.classList.remove('dragging');
@@ -37,18 +47,21 @@ export default ()=>{
     
     const drag = event => {
         event.dataTransfer.setData('text/html', event.currentTarget.outerHTML);
-        event.dataTransfer.setData('text/plain', event.currentTarget.dataset.id);
+        event.dataTransfer.setData('text/plain', event.currentTarget.dataset.id);    
+        var source = id ? document.getElementById(event.target.id).parentNode.id : '';
+        event.dataTransfer.setData("source", source);
     };
     
     const drop = event => {
-       // const data = event.dataTransfer.getData('text/plain');
+
         const codeId= event.dataTransfer.getData('text/plain');
         const statusId=event.currentTarget.id;
+        var source = event.dataTransfer.getData("source");
         
-        // romve drop style from target
+        // remove drop style from target
         document.querySelectorAll('.status').forEach(status => status.classList.remove('drop'));
-
-       dispatch(ricActions.updateRicStatus({codeId:codeId, statusId:statusId}));
+        if(source!==statusId)
+            dispatch(ricActions.updateRicStatus({codeId:codeId, projectId:id,statusId:statusId}));
        
     };
     
@@ -93,26 +106,26 @@ export default ()=>{
                     <h2>Registre des installations classées {id}</h2>
                     <h3>{error}</h3>
                     <main className="board">
-                    {statusOptions.map(option =>
-                    (           
-                        <div key={option.name} id={option.name} 
-                        draggable="false" 
-                            className={"status status-"+option.name} onDrop={e=> drop(e)} onDragOver={e=>allowDrop(e)}>
-                            <h2>{option.description}</h2>
-                            {ric.filter(s=>s.statusId===option.name).map(c=>
-                                (
-                                    <article key={c.codeId} className="card" 
-                                        draggable="true" 
-                                        onDragStart={e=>drag(e)}         
-                                        data-id={c.codeId}>
-                                        <h3>{'Code N°'+c.codeId}</h3>
-                                    </article>
-                                )
-                            )}
-                        </div>
-                    )
+                        {statusOptions.map(option =>
+                        (           
+                            <div key={option.name} id={option.name} 
+                                className={"status status-"+option.name} onDrop={e=> drop(e)} onDragOver={e=>allowDrop(e)}>
+                                <h2>{option.description +"("+ric.filter(s=>s.statusId===option.name).length+")"}</h2>
+                                {ric.filter(s=>s.statusId===option.name).map(c=>
+                                    (
+                                        <article key={c.codeId} className="card"
+                                            draggable="true" 
+                                            onDragStart={e=>drag(e)}         
+                                            data-id={c.codeId}
+                                            id={c.codeId}>
+                                            <h3>{c.code.codeRef}</h3>
+                                        </article>
+                                    )
+                                )}
+                            </div>
+                        )
                         
-                    )}
+                        )}
                     </main>                 
                 </>)}
         

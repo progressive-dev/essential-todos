@@ -7,6 +7,8 @@ import { getLoading } from '../application/selectors/ui';
 import * as uiActions from '../application/actions/ui';
 import * as projectActions from '../application/actions/collection';
 import classes from './Projects.module.css';
+import env from '../assets/env.png';
+import secu from '../assets/secu.png';
 
 export default () => {
     
@@ -28,7 +30,6 @@ export default () => {
   
     return (
         <>
-            <h1>Projects</h1>
             {loading ? 'Loading projects...' : (
                 <div className={classes.listContainer}>
                     {projects.map(project => (
@@ -36,10 +37,26 @@ export default () => {
                             key={project.id}
                             onClick={()=>navigateTo('/projects/'+project.id)}
                         >
-                            <h3>{project.name}</h3>
-                            <p>{project.description}</p>
-                            
-                        </div>
+                            <h3 color="gray">{project.name}</h3>
+                            <h5 className={classes.consultantName}>{project.consultantName}</h5>
+                            {/* <p>{project.description}</p>  */}
+                            <div className={classes.projectFooter}>
+                                <div className={classes.fit_picture}>
+                                        <div><img className={project.hasEnvironmentModule?classes.fit_picture:classes.hasOpac}
+                                            src={env}
+                                           
+                                            alt="environment"/>
+                                        </div>
+                                
+                                        <div><img className={project.hasSecurityModule?classes.fit_picture:classes.hasOpac}
+                                            src={secu}
+                                           
+                                            alt="security"/>
+                                        </div>
+                                </div>  
+                               
+                            </div>                                                     
+                        </div>                    
                     ))}
             </div>
                 

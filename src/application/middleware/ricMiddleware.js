@@ -20,7 +20,7 @@ const ricFlow =  ({ api }) => ({ dispatch }) => next => async (action) =>  {
 
     const updateStatus = async()=>{
         try{
-            //await api.ric.updateStatus(action.payload);
+            await api.ric.updateStatus(action.payload);
             dispatch(updateRicStatusSuccess(action.payload));
         }
         catch (error) {

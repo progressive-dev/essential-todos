@@ -5,8 +5,7 @@
 
 .board {
     display: flex;
-    justify-content: center;
-    margin-top: 50px;
+    justify-content: flex-start;
 }
 
 .card {
@@ -15,11 +14,16 @@
     margin-bottom: 10px;
     border-radius: 3px;
     cursor: pointer;
-    width: 150px;
-    height: 60px;
+    min-width: 200px;
+    width: auto;
+    height: 120px;
     cursor: grab;
     transition: all 0.3s cubic-bezier(0.4, 0.0, 0.2, 1);
+    position:relative;
+    box-sizing: content-box;
 }
+
+
 
 .card:active {
     cursor: grabbing;
@@ -35,6 +39,14 @@
     background: #2c2c2c;
     border: 2px solid #2c2c2c;
     transition: all 0.3s cubic-bezier(0.4, 0.0, 0.2, 1);
+    
+}
+
+.status.status {
+    margin: 0 2px;
+    min-width: 300px;
+   /* box-sizing:content-box;*/
+    width: 100%;
 }
 
 .status.status-idle h2 {
@@ -42,7 +54,7 @@
 }
 
 .status.status-info h2 {
-    background: #F39C12;
+    background:grey;
 }
 
 .status.status-ncpl h2 {
@@ -57,10 +69,11 @@
     background: rgb(202, 243, 18);
 }
 
-.status.status {
-    margin: 0 2px;
-    min-width: 80px;
+.status.status-ok h2 {
+    background: rgb(132, 223, 29);
 }
+
+
 
 .status.drop {
     border: 2px dashed #FFF;
@@ -70,18 +83,21 @@
     pointer-events: none;
 }
 
-h3 {
-    font-size: 21px;
+.card h3 {
+    font-size: 12px;
     font-family: Helvetica;
     margin: 0;
+    color: white;
+    position:absolute;
+
 }
 
 .card:last-child {
     margin-bottom: 0;
 }
 
-h2 {
-   background: green;
+.board h2 {
+    /*background: green;*/
     margin: -10px -10px 10px;
     padding: 4px 10px;
     font-family: Helvetica;

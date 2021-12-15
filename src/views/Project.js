@@ -6,6 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import { Alert,TabContent, TabPane, Nav, NavItem, NavLink } from 'reactstrap';
 import * as uiActions from '../application/actions/ui';
 import * as itemsActions from '../application/actions/collection';
+import * as projectActions from '../application/actions/projectActions';
 import { getItemSelector, getActiveTabSelector} from '../application/selectors/collection';
 
 import { getLoading } from '../application/selectors/ui';
@@ -118,14 +119,14 @@ return (
                         <input type='button' 
                                 value ='Create Security Module'  
                                 className='btn btn-outline-success'
-                                onClick={()=>dispatch(projectActions.CreateEnvironmentModule(project.id))}/>
+                                onClick={()=>dispatch(projectActions.createEnvironmentModule(project.id))}/>
                     </div>}
                 {!project.hasSecurityModule &&
                     <div className={'form-group col-md-2'}>
                         <input type='button' 
                                 value ='Create Security Module'  
                                 className='btn btn-outline-success'
-                                onClick={()=>dispatch(projectActions.CreateSecurityModule(project.id))}/>
+                                onClick={()=>dispatch(projectActions.createSecurityModule(project.id))}/>
                     </div>}
             </div>
             </Alert>

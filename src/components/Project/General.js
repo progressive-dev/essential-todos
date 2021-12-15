@@ -71,53 +71,7 @@ return(<>
                     collection={project.activityAreas}
                 />
             </div>
-            <div className="form-group col-md-4">
-                <label>Watch Frequency:  </label>
-                <DropDown
-                    register= {register}
-                    _name="watchFrequencyId"
-                    name="watchFrequencyId"
-                    value={project.activityAreaId}
-                    collection={project.watchFrequencies}
-                />
-            </div>
-        </div>
-
-        <div className="form-row row">
-            <div className="form-group col-md-1">
-                <label>Active Year:  </label>
-                <input
-                    type="number" min="2019" max="2030" step="1"
-                    className="form-control input-sm"
-                    name="activeYear"
-                    {...register("activeYear")} 
-                />
-            </div>
-
-        </div>
-
-        
-            <div className="form-group col-md-8">
-                <input
-                    {...register("watchActive")}
-                    type="checkbox"
-                    
-                    name="watchActive"
-                    id="watchActive"
-                />
-                <label className="p-2" htmlFor="watchActive">Watch Active ?</label>
-            </div>
-            <div className="form-group col-md-4">
-                <input
-                    {...register("multiSites")}
-                    type="checkbox"
-                    name="multiSites" 
-                    id="multiSites"
-                />
-                <label className="p-2" htmlFor="multiSites">Multisites ?</label>
-            </div>
-        
-
+        </div> 
         <div className="form-row row">
             <div className="form-group col-md-12">
                 <label>Description:  </label>

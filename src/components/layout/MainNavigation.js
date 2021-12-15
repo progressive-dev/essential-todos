@@ -5,12 +5,13 @@ import classes from './MainNavigation.module.css';
 
 function MainNavigation(){
 return <header className={classes.header}>
-    <div>---</div>
+    <div> 
+        <Link to='/'>
+            <img src={'images/ecobel.png'} ></img>
+        </Link>
+    </div>
     <nav>
         <ul>
-            <li>
-                <Link to='/'>Home</Link>
-            </li>
             <li>
                 <Link to='/Projects'>Projects</Link>
             </li>

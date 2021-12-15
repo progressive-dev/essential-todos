@@ -7,6 +7,7 @@ import { configureStore } from './application/store';
 import services from './infrastructure/services';
 import App from './views';
 import 'bootstrap/dist/css/bootstrap.css';
+import './views/Ric.css'
 
 ReactDOM.render(
 

@@ -1,9 +1,9 @@
 import axios from 'axios';
-const endpoint='https://localhost:44351/api/ric/';
+const endpoint='https://localhost:44351/api/projects/';
 export default {
     
-    update: async (ric) => {
-        const response = await axios.put(endpoint+UpdateRicStatus+'/'+ric);
+    updateStatus: async (ric) => {
+        const response = await axios.put(endpoint+'UpdateRicStatus/',ric);
         return response.data
     },
 }

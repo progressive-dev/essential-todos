@@ -4,8 +4,9 @@ import {LOAD_RIC_SUCCESS, UPDATE_RIC_STATUS_SUCCESS} from '../actions/ricActions
 const initialState = {
     ric:[],
     statusOptions:null,
-    error: 'non error at all',
+    error: null,
 };
+
 
 const reducer = (state = initialState, action) => {
     switch (action.type) {
@@ -17,11 +18,13 @@ const reducer = (state = initialState, action) => {
             }
         case UPDATE_RIC_STATUS_SUCCESS:
             const newRic = [...state.ric]
-            newRic.find(s => s.codeId == action.payload.codeId).statusId =action.payload.statusId;
-           // newRic[action.payload.codeId].statusId = action.payload.statusId;
-            return {...state,
-                ric:newRic,
+            const item = newRic.find(s => s.codeId == action.payload.codeId);
+            if(item.statusId !==action.payload.statusId)
+            {    
+                item.statusId=action.payload.statusId;
+                return {...state, ric:newRic}
             }
+            return state;
         default:
             return state;
     }

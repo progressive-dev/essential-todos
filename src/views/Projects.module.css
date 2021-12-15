@@ -1,6 +1,7 @@
 body{
     margin:0;
     padding: 0;
+
 }
 .listContainer{
     padding: 0 2%;
@@ -11,8 +12,14 @@ body{
     );
     grid-template-rows: 1fr;
     grid-gap: 20px;
-	
+    cursor: pointer;
+    margin-top: 30px;
+}
 
+.listContainer :hover  {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+    background-color:rgb(231, 231, 240);
+    border-radius: 10px;
 }
 
 .item{
@@ -20,10 +27,49 @@ body{
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
     transition: 0.3s;
     border-radius: 15px;
-}
-
-.listContainer :hover {
-    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
-    background-color:rgb(180, 180, 240);
+    position: relative;
+   
 }
  
+.consultantName{
+    font-style: italic;
+    color: gray;
+    font-size: 0.9rem;
+    ;
+}
+
+
+
+.projectFooter{
+    position: absolute;    
+    bottom:0; 
+    left: 0;    
+    padding: 10px; 
+    font-style: italic;                   
+    color: gray;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    align-items: center;
+}
+.item :hover{
+    box-shadow:none;
+  
+}
+
+
+.fit_picture{
+    display: flex;
+    opacity: 100%;
+    margin:10px;
+    width:35px;
+    height:35px; 
+}
+
+.hasOpac{
+
+    margin:10px;
+    opacity: 15%;
+    width:35px;
+    height:35px; 
+}
